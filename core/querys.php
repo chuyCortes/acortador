@@ -34,16 +34,28 @@
          	$this->_db->close(); 
 	    }
 	    
-	    public function agregar($tabla , $campos){
-	    	
-	    	
-	    	 $query= 'INSERT INTO'.' '.$tabla.'(url_original,url_corta)'.' '.'VALUES ('.$campos.');';
-	    	 $result = $this->_db->query($query);
-	    	if($result)
-	    		return true;
+	    public function agregar($tabla , $campos, $camposSC){
+	    	$pasturl = $this->newurl();
+	    	$arraycampos = explode(",",$camposSC);
+	    	 if($pasturl[1] == $arraycampos[0]){
+	    			echo "<script>console.log('son iguales');</script>";
+	    		}
+	    	else{
+	    			$query= 'INSERT INTO'.' '.$tabla.'(url_original,url_corta)'.' '.'VALUES ('.$campos.');';
+	    			$result = $this->_db->query($query);
+	    			if($result)
+	    					return true;
+	    			else
+	    					return false;
+	    	}
+
+	    	// $query= 'INSERT INTO'.' '.$tabla.'(url_original,url_corta)'.' '.'VALUES ('.$campos.');';
+	    	// $result = $this->_db->query($query);
+	    	//if($result)
+	    	//	return true;
 		    	//echo "<script>console.log('jalo');</script>";
-	    	else
-	    		return false;
+	    	//else
+	    	//	return false;
 		    	//echo "<script>console.log('".$query."');</script>";
 
 		    //header('Location:home.php');
