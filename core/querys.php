@@ -18,17 +18,35 @@
          	$this->_db->close(); 
 	    }
 
+	    public function lastid(){
+	    	$result = $this->_db->query("SELECT MAX(id_url) FROM urls; "); 
+         	$row = mysqli_fetch_array($result);
+         	$row = $row[0];
+         	return $row;
+         	$this->_db->close(); 
+	    }
+
+	    public function newurl(){
+	    	$id = $this->lastid();
+	    	$result = $this->_db->query("select * from  urls where id_url=".$id." ;"); 
+         	$row = mysqli_fetch_array($result);
+         	return $row;
+         	$this->_db->close(); 
+	    }
 	    
-	    public function agregarUsuario($tabla , $campos){
+	    public function agregar($tabla , $campos){
 	    	
-	    	 $query= 'INSERT INTO'.' '.$tabla.'(nombre_firma,puesto)'.' '.'VALUES ('.$campos.');';
+	    	
+	    	 $query= 'INSERT INTO'.' '.$tabla.'(url_original,url_corta)'.' '.'VALUES ('.$campos.');';
 	    	 $result = $this->_db->query($query);
 	    	if($result)
-		    	echo "<script>console.log('jalo');</script>";
+	    		return true;
+		    	//echo "<script>console.log('jalo');</script>";
 	    	else
-		    	echo "<script>console.log('".$query."');</script>";
+	    		return false;
+		    	//echo "<script>console.log('".$query."');</script>";
 
-		    header('Location:home.php');
+		    //header('Location:home.php');
 	    }
       		    
 	    public function inicio_secion($campos){
