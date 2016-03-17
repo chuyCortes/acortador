@@ -40,10 +40,18 @@
 			 function myFunction() {
                 var url = document.getElementById("urlold").value;
                 var pattern = /^(http|https)\:\/\/[a-z0-9\.-]+\.[a-z]{2,4}/gi;
-               	if(url.match(pattern))
-                   document.getElementById("myForm").submit(); 
-                else
-                   alert("no es una url valida"); // return false; 
+               	if(url.match(pattern)){
+                   //document.getElementById("myForm").submit(); 
+                   return true;
+               	}
+                else{
+                   alert("no es una url valida"); 
+                   return false;
+          //          document.getElementById('myForm').onsubmit = function() {
+    						// 			return false;
+										// }
+ 
+                }
             }
 			
 		</script>
@@ -56,14 +64,14 @@
 			<main class="main">
 				<!-- <h3 class="letra">cortador de url's </h3> -->
 				<div id="url">
-					<form action="" id="myForm" method="post" onsubmit=" myFunction();">
+					<form action="" id="myForm" method="post" onsubmit="return myFunction();">
 						<input type="text" id="urlold" name="urlold" class="register-input" placeholder="url">
 						<input type="submit" name="submit" value="acortar" class="myButton right" >
 					</form>
 					<?php
 						if($mostrar)
 						{
-							echo " <p class=\"short \" >La url corta es:<a href=\"".$new[1]."\">".$new[2]."</a></p>";
+							echo " <p class=\"short \" >La url corta es:<a href=\"".$new[1]."\">".$new[2]."</a></p><br><p class=\"short2 \">La url original:".$new[1]."</p>";
 							$mostrar =false;
 						}
 					?>

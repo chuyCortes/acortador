@@ -90,7 +90,10 @@ header img {
 	font-family:helvetica;
 	margin:200px 0 0 0;
 }
-
+.short2{
+	font-family:helvetica;
+	margin:10px 0 0 0;
+}
 /***footer***/
 footer{
 	background-color: rgb(171,174,166);
