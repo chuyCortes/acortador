@@ -63,13 +63,14 @@
       		    
 	    public function inicio_secion($campos){
 	    	$arraycampos = explode(",",$campos);
-	    	$sql="SELECT d.nombre_firma, u.id_firma FROM usario u JOIN datos_firmas d on u.id_firma = d.id_firma where u.pass = ".$arraycampos[1]." AND d.correo =".$arraycampos[0]."";
+	    	$sql="SELECT id_usuario, usuario FROM usuario where usuario = ".$arraycampos[0]." AND contra =".$arraycampos[1]."";
 			$result = $this->_db->query($sql);
 			while ($fila = mysqli_fetch_array($result)) {
-				$varNombre=utf8_encode($fila["nombre_firma"]);
-				$varid=utf8_encode($fila["id_firma"]);
+				$usuario=utf8_encode($fila["usuario"]);
+				$id_usuario=utf8_encode($fila["id_usuario"]);
 			}
-			 return $varNombre.$varid;
+			 return $id_usuario;
+			
 	    }
 
 	    public function limpiar($dirty){
@@ -79,6 +80,15 @@
 					$liberate = mysql_real_escape_string($dirty);
 					}
 				return $liberate;
+	    }
+
+	    public function checaurl($urlcorta){
+	    	$sql="select url_original from urls where url_corta=".$url_corta;
+			$result = $this->_db->query($sql);
+			while ($fila = mysqli_fetch_array($result)) {
+				$urlOriginal=utf8_encode($fila["url_original"]);
+			}
+			 return $urlOriginal;
 	    }
 
 

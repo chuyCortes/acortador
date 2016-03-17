@@ -105,3 +105,14 @@ footer p {
 	text-align: center;
 }
 
+#cs a{
+	color: white;
+	float: right;
+	font-family: helvetica;
+	margin:15px 10px 0 0;
+	text-decoration: none;
+}
+.login{
+	margin:auto;
+	width: 350px;
+}

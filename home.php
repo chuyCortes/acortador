@@ -30,6 +30,17 @@
 	{
 		$mostrar=false;			
 	}
+
+    session_start();
+    // include 'core/querys.php';
+    // $varQuery = new Querys();
+    if(empty($_SESSION['username'])) {
+        header('Location: index.php');
+        //echo "empty";
+    }
+    else{
+        
+    
 ?>
 <!DOCTYPE html>
 <html>
@@ -60,6 +71,7 @@
 		<div class="contenedor">
 			<header>
 				<img src="images/logo_dti.png"alt="imagen dti">
+				<div id="cs" class="right"><a href="index.php">Cerrar Sesión</a></div>
 			</header>
 			<main class="main">
 				<!-- <h3 class="letra">cortador de url's </h3> -->
@@ -85,3 +97,6 @@
 		</div>
 	</body>
 </html>
+<?php 
+    }
+?>
