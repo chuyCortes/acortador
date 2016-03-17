@@ -36,7 +36,17 @@
 	<head>
 		<title>acortador url</title>
 		<link rel="stylesheet" type="text/css" href="css/estilo.css">
-		<script src="js/index.js"></script>
+		<script>
+			 function myFunction() {
+                var url = document.getElementById("urlold").value;
+                var pattern = /^(http|https)\:\/\/[a-z0-9\.-]+\.[a-z]{2,4}/gi;
+               	if(url.match(pattern))
+                   document.getElementById("myForm").submit(); 
+                else
+                   alert("no es una url valida"); // return false; 
+            }
+			
+		</script>
 	</head>
 	<body>
 		<div class="contenedor">
@@ -46,8 +56,8 @@
 			<main class="main">
 				<!-- <h3 class="letra">cortador de url's </h3> -->
 				<div id="url">
-					<form action="" method="post" onsubmit="myFunction();">
-						<input type="text" name="urlold" class="register-input" placeholder="url">
+					<form action="" id="myForm" method="post" onsubmit=" myFunction();">
+						<input type="text" id="urlold" name="urlold" class="register-input" placeholder="url">
 						<input type="submit" name="submit" value="acortar" class="myButton right" >
 					</form>
 					<?php
