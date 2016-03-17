@@ -1,7 +1,14 @@
 <?php
 	include 'core/functions.php';
 	$master = new fun();
-	//echo $master->microurl();
+	if(isset($_POST["submit"]))
+		{
+			echo $_POST["urlold"]."<br/>";
+			if(!is_null($_POST["urlold"]))
+				echo $master->microurl();
+			else
+				echo "holis";
+		}
 ?>
 <!DOCTYPE html>
 <html>
@@ -17,11 +24,11 @@
 			<main class="main">
 				<!-- <h3 class="letra">cortador de url's </h3> -->
 				<div id="url">
-					<form action="">
-						<input type="text" class="register-input" placeholder="url">
-						<input type="submit"  value="acortar" class="myButton right" >
+					<form method="post" action="">
+						<input type="text" name="urlold" class="register-input" placeholder="url">
+						<input type="submit" name="submit" value="acortar" class="myButton right" >
 					</form>
-					<p class="short " >La url corta es:<a href="https://bitly.com/">http://uanl.com/<?php echo $master->microurl();?></a></p>
+					<!-- <p class="short " >La url corta es:<a href="https://bitly.com/">http://uanl.com/</a></p> -->
 				</div>
 			</main>
 			<footer>

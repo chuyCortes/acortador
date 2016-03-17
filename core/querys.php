@@ -11,8 +11,6 @@
 			parent::__construct();
 		}
 
-		
-
 		public function ejecutarSql($id){
 	        $result = $this->_db->query("select * from  datos_firmas where id_firma=".$id." ;"); 
          	$row = mysqli_fetch_array($result);
@@ -22,7 +20,8 @@
 
 	    
 	    public function agregarUsuario($tabla , $campos){
-	    	 $query= 'INSERT INTO'.' '.$tabla.'(nombre_firma,puesto,area,departamento,tel,ext,cel,correo)'.' '.'VALUES ('.$campos.');';
+	    	
+	    	 $query= 'INSERT INTO'.' '.$tabla.'(nombre_firma,puesto)'.' '.'VALUES ('.$campos.');';
 	    	 $result = $this->_db->query($query);
 	    	if($result)
 		    	echo "<script>console.log('jalo');</script>";
