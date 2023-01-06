@@ -19,7 +19,8 @@
 	    }
 
 	    public function lastid(){
-	    	$result = $this->_db->query("SELECT MAX(id_url) FROM urls; "); 
+	    	//$result = $this->_db->query("SELECT MAX(id_url) FROM urls; "); 
+         	$result = $this->_db->execute_query('SELECT MAX(id_url) FROM urls;');
          	$row = mysqli_fetch_array($result);
          	$row = $row[0];
          	return $row;
